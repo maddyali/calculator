@@ -15,11 +15,16 @@ const operate = function (operator, a, b) {
 };
 
 const numberBtns = document.querySelectorAll(".number");
+const screen = document.querySelector(".screen");
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => displayNumber(button.textContent));
 });
 
 function displayNumber(number) {
-  document.querySelector(".screen").textContent += number;
+  if (screen.textContent === "0") {
+    screen.textContent = number;
+  } else {
+    screen.textContent += number;
+  }
 }
