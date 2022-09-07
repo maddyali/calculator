@@ -13,3 +13,13 @@ const operate = function (operator, a, b) {
       break;
   }
 };
+
+const numberBtns = document.querySelectorAll(".number");
+
+numberBtns.forEach((button) => {
+  button.addEventListener("click", () => displayNumber(button.textContent));
+});
+
+function displayNumber(number) {
+  document.querySelector(".screen").textContent += number;
+}
