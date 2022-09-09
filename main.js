@@ -30,7 +30,8 @@ const currentOperationScreen = document.querySelector(
 const lastOperationScreen = document.querySelector("#lastOperationScreen");
 
 const operatorBtns = document.querySelectorAll(".operator");
-const equals = document.querySelector(".equals");
+const equalsBtn = document.querySelector(".equals");
+const clearBtn = document.querySelector("#clearBtn");
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => displayNumber(button.textContent));
@@ -40,7 +41,9 @@ operatorBtns.forEach((button) => {
   button.addEventListener("click", () => setOperation(button.textContent));
 });
 
-equals.addEventListener("click", () => evaluate());
+equalsBtn.addEventListener("click", () => evaluate());
+
+clearBtn.addEventListener("click", () => clear());
 
 let firstOperand;
 let secondOperand;
@@ -64,7 +67,7 @@ function setOperation(operator) {
 }
 
 function resetScreen() {
-  currentOperationScreen.textContent = " ";
+  currentOperationScreen.textContent = "";
   resetScreenState = false;
 }
 
@@ -79,4 +82,11 @@ function evaluate() {
   lastOperationScreen.textContent += `${secondOperand} = `;
   currentOperation = null;
   resetScreenState = true;
+}
+
+function clear() {
+  currentOperationScreen.textContent = "0";
+  lastOperationScreen.textContent = "";
+  currentOperation = null;
+  resetScreenState = false;
 }
