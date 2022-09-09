@@ -28,25 +28,23 @@ const currentOperationScreen = document.querySelector(
   "#currentOperationScreen"
 );
 const lastOperationScreen = document.querySelector("#lastOperationScreen");
-
 const operatorBtns = document.querySelectorAll(".operator");
 const equalsBtn = document.querySelector(".equals");
 const clearBtn = document.querySelector("#clearBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => displayNumber(button.textContent));
 });
-
 operatorBtns.forEach((button) => {
   button.addEventListener("click", () => setOperation(button.textContent));
 });
-
 equalsBtn.addEventListener("click", () => evaluate());
-
 clearBtn.addEventListener("click", () => clear());
+deleteBtn.addEventListener("click", () => deleteNumber());
 
-let firstOperand;
-let secondOperand;
+let firstOperand = null;
+let secondOperand = null;
 let currentOperation = null;
 let resetScreenState = false;
 
@@ -89,4 +87,11 @@ function clear() {
   lastOperationScreen.textContent = "";
   currentOperation = null;
   resetScreenState = false;
+}
+
+function deleteNumber() {
+  currentOperationScreen.textContent = currentOperationScreen.textContent.slice(
+    0,
+    -1
+  );
 }
