@@ -31,7 +31,7 @@ operatorBtns.forEach((button) => {
   button.addEventListener("click", () => setOperation(button.textContent));
 });
 
-equals.addEventListener("click", () => console.log("equals"));
+equals.addEventListener("click", () => evaluate());
 
 let firstOperand;
 let secondOperand;
@@ -57,4 +57,17 @@ function setOperation(operator) {
 function resetScreen() {
   currentOperationScreen.textContent = " ";
   resetScreenState = false;
+}
+
+function evaluate() {
+  if (currentOperation === null || resetScreenState) return;
+  secondOperand = currentOperationScreen.textContent;
+  currentOperationScreen.textContent = operate(
+    `${currentOperation}`,
+    Number(`${firstOperand}`),
+    Number(`${secondOperand}`)
+  );
+  lastOperationScreen.textContent += `${secondOperand} = `;
+  currentOperation = null;
+  resetScreenState = true;
 }
