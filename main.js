@@ -11,6 +11,15 @@ const operate = function (operator, a, b) {
     case "+":
       return add(a, b);
       break;
+    case "-":
+      return subtract(a, b);
+      break;
+    case "x":
+      return multiply(a, b);
+      break;
+    case "÷":
+      return divide(a, b);
+      break;
   }
 };
 
