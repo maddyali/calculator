@@ -71,6 +71,10 @@ function resetScreen() {
 
 function evaluate() {
   if (currentOperation === null || resetScreenState) return;
+  if (currentOperation === "÷" && currentOperationScreen.textContent === "0") {
+    alert("The math ain't mathing");
+    return;
+  }
   secondOperand = currentOperationScreen.textContent;
   currentOperationScreen.textContent = operate(
     `${currentOperation}`,
