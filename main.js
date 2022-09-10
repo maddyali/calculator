@@ -7,6 +7,8 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const operate = function (operator, a, b) {
+  a = Number(a);
+  b = Number(b);
   switch (operator) {
     case "+":
       return add(a, b);
@@ -18,7 +20,8 @@ const operate = function (operator, a, b) {
       return multiply(a, b);
       break;
     case "÷":
-      return divide(a, b);
+      if (b === 0) return null;
+      else return divide(a, b);
       break;
   }
 };
@@ -77,11 +80,7 @@ function evaluate() {
   }
   secondOperand = currentOperationScreen.textContent;
   currentOperationScreen.textContent = roundNumber(
-    operate(
-      `${currentOperation}`,
-      Number(`${firstOperand}`),
-      Number(`${secondOperand}`)
-    )
+    operate(`${currentOperation}`, `${firstOperand}`, `${secondOperand}`)
   );
   lastOperationScreen.textContent += `${secondOperand} = `;
   currentOperation = null;
