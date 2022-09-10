@@ -80,7 +80,7 @@ function evaluate() {
   }
   secondOperand = currentOperationScreen.textContent;
   currentOperationScreen.textContent = roundNumber(
-    operate(`${currentOperation}`, `${firstOperand}`, `${secondOperand}`)
+    operate(currentOperation, firstOperand, secondOperand)
   );
   lastOperationScreen.textContent += `${secondOperand} = `;
   currentOperation = null;
@@ -102,5 +102,5 @@ function deleteNumber() {
 }
 
 function roundNumber(number) {
-  return Math.round(number / 10000) * 10000;
+  return Math.round(number * 10000) / 10000;
 }
