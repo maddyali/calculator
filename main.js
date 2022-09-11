@@ -35,6 +35,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const equalsBtn = document.querySelector(".equals");
 const clearBtn = document.querySelector("#clearBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
+const decimalBtn = document.querySelector("#decimalBtn");
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => displayNumber(button.textContent));
@@ -45,6 +46,7 @@ operatorBtns.forEach((button) => {
 equalsBtn.addEventListener("click", () => evaluate());
 clearBtn.addEventListener("click", () => clear());
 deleteBtn.addEventListener("click", () => deleteNumber());
+decimalBtn.addEventListener("click", () => displayDecimal());
 
 let firstOperand = null;
 let secondOperand = null;
@@ -104,4 +106,11 @@ function deleteNumber() {
 
 function roundNumber(number) {
   return Math.round(number * 10000) / 10000;
+}
+
+function displayDecimal() {
+  if (currentOperationScreen.textContent === "")
+    currentOperationScreen.textContent = 0;
+  if (currentOperationScreen.textContent.includes(".")) return;
+  currentOperationScreen.textContent += ".";
 }
