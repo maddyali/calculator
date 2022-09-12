@@ -114,3 +114,23 @@ function displayDecimal() {
   if (currentOperationScreen.textContent.includes(".")) return;
   currentOperationScreen.textContent += ".";
 }
+
+// keyboard support
+
+document.addEventListener("keydown", keyboardSupport);
+
+function keyboardSupport(e) {
+  if (e.key >= 0 && e.key <= 9) displayNumber(e.key);
+  if (e.key === "Backspace") deleteNumber();
+  if (e.key === ".") displayDecimal();
+  if (e.key === "Enter" || e.key === "=") evaluate();
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+    setOperation(convertKeyOperator(e.key));
+}
+
+function convertKeyOperator(keyboardOperator) {
+  if (keyboardOperator === "+") return "+";
+  if (keyboardOperator === "-") return "−";
+  if (keyboardOperator === "*") return "×";
+  if (keyboardOperator === "/") return "÷";
+}
